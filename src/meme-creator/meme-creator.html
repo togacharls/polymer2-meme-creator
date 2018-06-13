@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="meme-creator">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class MemeCreator extends Polymer.Element {
+      static get is() { return 'meme-creator'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'meme-creator'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MemeCreator.is, MemeCreator);
+  </script>
+</dom-module>

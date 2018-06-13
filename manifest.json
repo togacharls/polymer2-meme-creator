@@ -1,0 +1,7 @@
+{
+  "name": "meme-creator",
+  "short_name": "meme-creator",
+  "description": "Simple meme creator using Polymer 2",
+  "start_url": "/",
+  "display": "standalone"
+}
