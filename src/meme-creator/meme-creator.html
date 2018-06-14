@@ -1,46 +1,53 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="meme-creator">
-  <template>
-    <style>
-      :host {
-        display: block;
-        width: 900px;
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-      }
-      meme-image{
-        top: 12.5%;
-      }
-      meme-image{
-        left: 25%;
-        width: 50%;
-      }
-    </style>
-   <meme-image></meme-image>
-  </template>
+    <template>
+        <style>
+            :host {
+                display: block;
+                width: 900px;
+                font-family: 'Avenir', Helvetica, Arial, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-align: center;
+                color: #2c3e50;
+                margin-top: 60px;
+            }
 
-  <script>
-    /**
-     * @customElement
-     * @polymer
-     */
-    class MemeCreator extends Polymer.Element {
-      static get is() { return 'meme-creator'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'meme-creator'
-          }
-        };
-      }
-    }
+            meme-image {
+                top: 12.5%;
+            }
 
-    window.customElements.define(MemeCreator.is, MemeCreator);
-  </script>
+            meme-image,
+            meme-form {
+                left: 25%;
+                width: 50%;
+            }
+        </style>
+        <meme-image></meme-image>
+        <meme-form></meme-form>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class MemeCreator extends Polymer.Element {
+            static get is() {
+                return 'meme-creator';
+            }
+
+            static get properties() {
+                return {
+                    prop1: {
+                        type: String,
+                        value: 'meme-creator'
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(MemeCreator.is, MemeCreator);
+    </script>
 </dom-module>

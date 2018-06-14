@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="meme-form">
+    <template>
+        <style>
+            :host {
+                position: relative;
+            }
+
+            input {
+                display: block;
+                margin: 0.6em 33%;
+                width: 33%;
+            }
+        </style>
+        <input value="{{imgSrc::change}}" placeholder="[[placeholderImgSrc]]">
+        <input value="{{above::change}}" placeholder="[[placeholderAbove]]">
+        <input value="{{below::change}}" placeholder="[[placeholderBelow]]">
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class MemeForm extends Polymer.Element {
+            static get is() {
+                return 'meme-form'
+            }
+
+            static get properties() {
+                return {
+                    above: {
+                        type: String,
+                        value: 'ABOVE TEXT',
+                        notify: true
+                    },
+                    below: {
+                        type: String,
+                        value: 'BELOW TEXT',
+                        notify: true
+                    },
+                    imgSrc: {
+                        type: String,
+                        value: 'https://www.polymer-project.org/images/logos/p-logo.png',
+                        notify: true
+                    },
+                    placeholderAbove: {
+                        value: 'Above text...',
+                        type: String
+                    },
+                    placeholderBelow: {
+                        value: 'Below text...',
+                        type: String
+                    },
+                    placeholderImgSrc: {
+                        value: 'Img src...',
+                        type: String
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(MemeForm.is, MemeForm);
+    </script>
+</dom-module>
