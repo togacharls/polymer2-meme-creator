@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="meme-form">
     <template>
@@ -16,6 +17,7 @@
         <input value="{{imgSrc::change}}" placeholder="[[placeholderImgSrc]]">
         <input value="{{above::change}}" placeholder="[[placeholderAbove]]">
         <input value="{{below::change}}" placeholder="[[placeholderBelow]]">
+        <iron-ajax url="[[imgSrc]]" method="GET"></iron-ajax>
     </template>
 
     <script>
@@ -62,14 +64,32 @@
                     }
                 };
             }
-            _onChangeAbove(newVal){
-                this.shadowRoot.dispatchEvent(new CustomEvent('changeAbove', {bubbles: true, composed: true, detail: newVal}))
+
+            _onChangeAbove(newVal) {
+                this.shadowRoot.dispatchEvent(new CustomEvent('changeAbove', {
+                    bubbles: true,
+                    composed: true,
+                    detail: newVal
+                }))
             }
-            _onChangeBelow(newVal){
-                this.shadowRoot.dispatchEvent(new CustomEvent('changeBelow', {bubbles: true, composed: true, detail: newVal}))
+
+            _onChangeBelow(newVal) {
+                this.shadowRoot.dispatchEvent(new CustomEvent('changeBelow', {
+                    bubbles: true,
+                    composed: true,
+                    detail: newVal
+                }))
             }
-            _onChangeImgSrc(newVal){
-                this.shadowRoot.dispatchEvent(new CustomEvent('changeImgSrc', {bubbles: true, composed: true, detail: newVal}))
+
+            _onChangeImgSrc(newVal, oldVal) {
+                let ironAjaxElement = this.shadowRoot.querySelector('iron-ajax').generateRequest();
+                ironAjaxElement.completes.then(
+                    () => this.shadowRoot.dispatchEvent(new CustomEvent('changeImgSrc', {
+                        bubbles: true,
+                        composed: true,
+                        detail: newVal
+                    })),
+                    () => this.set('imgSrc', oldVal))
             }
         }
 
