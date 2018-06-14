@@ -1,58 +1,64 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="meme-image">
-  <template>
-    <style>
-      :host {
-        position: relative;
-        text-align: center;
-      }
-      img{
-        width: 100%;
-      }
-      h1{
-        position: absolute;
-        font-weight: bold;
-        color: #ffffff;
-        z-index: 2;
-        width: 100%;
-        font-size: 3em;
-        text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-      }
-      h1.below-text{
-        bottom: 0em;
-      }
-    </style>
-    <h1 class="above-text">[[aboveText]]</h1>
-    <img src="[[imgSrc]]"/>
-    <h1 class="below-text">[[belowText]]</h1>
-  </template>
-
-  <script>
-    /**
-     * @customElement
-     * @polymer
-     */
-    class MemeImage extends Polymer.Element {
-      static get is() { return 'meme-image'; }
-      static get properties() {
-        return {
-            aboveText: {
-              type: String,
-              value: 'ABOVE TEXT'
-            },
-            belowText: {
-                type: String,
-                value: 'BELOW TEXT'
-            },
-            imgSrc: {
-                type: String,
-                value: 'https://www.polymer-project.org/images/logos/p-logo.png'
+    <template>
+        <style>
+            :host {
+                position: relative;
+                text-align: center;
             }
-        };
-      }
-    }
 
-    window.customElements.define(MemeImage.is, MemeImage);
-  </script>
+            img {
+                width: 100%;
+            }
+
+            h1 {
+                position: absolute;
+                font-weight: bold;
+                color: #ffffff;
+                z-index: 2;
+                width: 100%;
+                font-size: 3em;
+                text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+            }
+
+            h1.below-text {
+                bottom: 0em;
+            }
+        </style>
+        <h1 class="above-text">[[aboveText]]</h1>
+        <img src="[[imgSrc]]"/>
+        <h1 class="below-text">[[belowText]]</h1>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class MemeImage extends Polymer.Element {
+            static get is() {
+                return 'meme-image'
+            }
+
+            static get properties() {
+                return {
+                    aboveText: {
+                        type: String,
+                        value: ''
+                    },
+                    belowText: {
+                        type: String,
+                        value: ''
+                    },
+                    imgSrc: {
+                        type: String,
+                        value: ''
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(MemeImage.is, MemeImage);
+    </script>
 </dom-module>

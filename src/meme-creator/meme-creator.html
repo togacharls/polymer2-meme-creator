@@ -34,8 +34,16 @@
          * @polymer
          */
         class MemeCreator extends Polymer.Element {
+
+            ready() {
+                this.addEventListener('changeAbove', this._onChangeAbove.bind(this))
+                this.addEventListener('changeBelow', this._onChangeBelow.bind(this))
+                this.addEventListener('changeImgSrc', this._onChangeImgSrc.bind(this))
+                super.ready();
+            }
+
             static get is() {
-                return 'meme-creator';
+                return 'meme-creator'
             }
 
             static get properties() {
@@ -44,7 +52,19 @@
                         type: String,
                         value: 'meme-creator'
                     }
-                };
+                }
+            }
+
+            _onChangeAbove(event) {
+                this.shadowRoot.querySelector('meme-image').setAttribute('above-text', event.detail)
+            }
+
+            _onChangeBelow(event) {
+                this.shadowRoot.querySelector('meme-image').setAttribute('below-text', event.detail)
+            }
+
+            _onChangeImgSrc(event) {
+                this.shadowRoot.querySelector('meme-image').setAttribute('img-src', event.detail)
             }
         }
 

@@ -33,17 +33,20 @@
                     above: {
                         type: String,
                         value: 'ABOVE TEXT',
-                        notify: true
+                        notify: true,
+                        observer: '_onChangeAbove'
                     },
                     below: {
                         type: String,
                         value: 'BELOW TEXT',
-                        notify: true
+                        notify: true,
+                        observer: '_onChangeBelow'
                     },
                     imgSrc: {
                         type: String,
                         value: 'https://www.polymer-project.org/images/logos/p-logo.png',
-                        notify: true
+                        notify: true,
+                        observer: '_onChangeImgSrc'
                     },
                     placeholderAbove: {
                         value: 'Above text...',
@@ -58,6 +61,15 @@
                         type: String
                     }
                 };
+            }
+            _onChangeAbove(newVal){
+                this.shadowRoot.dispatchEvent(new CustomEvent('changeAbove', {bubbles: true, composed: true, detail: newVal}))
+            }
+            _onChangeBelow(newVal){
+                this.shadowRoot.dispatchEvent(new CustomEvent('changeBelow', {bubbles: true, composed: true, detail: newVal}))
+            }
+            _onChangeImgSrc(newVal){
+                this.shadowRoot.dispatchEvent(new CustomEvent('changeImgSrc', {bubbles: true, composed: true, detail: newVal}))
             }
         }
 
